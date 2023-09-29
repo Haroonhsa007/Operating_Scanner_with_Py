@@ -1,4 +1,5 @@
-# Operating_Scanner_with_Py
+# Operating Scanner with Python (A5 Scanner)
+
 # Report on the Scanner Program
 
 ## Introduction
@@ -56,6 +57,33 @@ The program initiates the scanning process using
 `device.scan(multiple=False)`. It then enters a loop to continuously
  read scan data until an End of File (EOF) error is raised.
 
+$$ The below code can be changed for any Size depending on your Scanner 
+$$ Either A5 or A4 or any other size
+
+```
+def set_scan_area_A5(device):
+    options = device.options
+
+    # Define A5 dimensions in millimeters
+    a5_width_mm = 148
+    a5_height_mm = 210
+
+    # Convert A5 dimensions to pixels at 600dpi (1 inch = 25.4mm)
+    a5_width_pixels = int(a5_width_mm / 25.4 * 600)
+    a5_height_pixels = int(a5_height_mm / 25.4 * 600)
+
+    # Set the top-left corner coordinates (0, 0)
+    pyinsane2.set_scan_area_pos(options,'tl-x', lambda min_val, max_val: 0, {'tl-x': 0} )
+    pyinsane2.set_scan_area_pos(options, 'tl-y', lambda min_val, max_val: 0, {'tl-y': 0} )
+
+    # Set the bottom-right corner coordinates (a5_width_pixels, a5_height_pixels)
+    
+    pyinsane2.set_scan_area_pos(options, 'br-x', lambda min_val, max_val: a5_width_pixels, {'br-x': a5_width_pixels} )
+    pyinsane2.set_scan_area_pos(options, 'br-y', lambda min_val, max_val: a5_height_pixels, {'br-y': a5_height_pixels} )
+
+    device.options = options
+```
+ 
 #### e. Saving Output File
 
 The output file is named "output.jpg" initially. 
