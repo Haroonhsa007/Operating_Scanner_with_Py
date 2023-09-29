@@ -1,6 +1,8 @@
 import os
-from PIL import Image
+import sys
 import pyinsane2
+
+PROGRESSION_INDICATOR = ['|', '/', '-', '\\', '|', '/', '-', '\\']
 
 def set_scan_area_A5(device):
     options = device.options
@@ -15,13 +17,11 @@ def set_scan_area_A5(device):
 
     # Set the top-left corner coordinates (0, 0)
     pyinsane2.set_scan_area_pos(options,'tl-x', lambda min_val, max_val: 0, {'tl-x': 0} )
-
     pyinsane2.set_scan_area_pos(options, 'tl-y', lambda min_val, max_val: 0, {'tl-y': 0} )
 
     # Set the bottom-right corner coordinates (a5_width_pixels, a5_height_pixels)
     
     pyinsane2.set_scan_area_pos(options, 'br-x', lambda min_val, max_val: a5_width_pixels, {'br-x': a5_width_pixels} )
-
     pyinsane2.set_scan_area_pos(options, 'br-y', lambda min_val, max_val: a5_height_pixels, {'br-y': a5_height_pixels} )
 
     device.options = options
@@ -29,6 +29,7 @@ def set_scan_area_A5(device):
 def main():
     # Looking for scanners
     devices = pyinsane2.get_devices()
+    
     if len(devices) <= 0:
         print("No scanner detected !")
         return
@@ -44,10 +45,16 @@ def main():
 
     # Scanning
     print("Scanning ...")
+    
     scan_session = device.scan(multiple=False)
 
     try:
+        i = -1
         while True:
+            i += 1
+            i %= len(PROGRESSION_INDICATOR)
+            sys.stdout.write("\b%s" % PROGRESSION_INDICATOR[i])
+            sys.stdout.flush()
             scan_session.scan.read()
     except EOFError:
         pass
