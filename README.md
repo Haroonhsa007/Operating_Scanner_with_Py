@@ -114,11 +114,11 @@ specific scan parameters, performs the scan, and
 
 ## The Project was created on Anaconda keep that in mind. 
 
-$$ First Create Venv Using
+First Create Venv Using
 `conda create -m your_Env_Name`
 
-$$ It will ask for some permissions say yes then
-$$ To activate the virtual envirements use 
+It will ask for some permissions say yes then
+To activate the virtual envirements use 
 `conda activate your_Env_Name`
 
 $$ To DeActivate the envirements
