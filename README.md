@@ -111,3 +111,31 @@ interfacing with a scanner device in Python. It sets
 specific scan parameters, performs the scan, and
  handles the output in an organized manner. The resulting scanned
   image is saved in JPEG format for further use.
+
+## The Project was created on Anaconda keep that in mind. 
+
+$$ First Create Venv Using
+`conda create -m your_Env_Name`
+
+$$ It will ask for some permissions say yes then
+$$ To activate the virtual envirements use 
+`conda activate your_Env_Name`
+
+$$ To DeActivate the envirements
+`conda deactivate`
+
+$$ Then to Download and install the packages use 
+```
+git clone https://github.com/Haroonhsa007/Operating_Scanner_with_Py.git
+
+# or
+https://github.com/Haroonhsa007/Operating_Scanner_with_Py/archive/refs/heads/main.zip
+
+# Then 
+pip install -r requirements
+
+# Finally
+python Scan-5.py
+
+# Make sure that your Scanner's Connected
+```
