@@ -37,7 +37,7 @@ and saving image files.
 
 `set_scan_area_A5(device)`
 
-$$ This function is used to set the scanning area to A5 size.
+This function is used to set the scanning area to A5 size.
 
 It calculates the dimensions in pixels for an A5 paper and 
 then sets the `top-left and bottom-right` coordinates accordingly.
@@ -48,8 +48,7 @@ This is the `main function` that controls the `scanning process`.
 
 It first looks for `connected scanners`. If none are found, it 
 prints a message and exits.
-
-$$ If a scanner is found, it proceeds to set various scanner options 
+If a scanner is found, it proceeds to set various scanner options 
 like source `(FlatBed), resolution (600 DPI), mode (Color)`, and 
 `the scan area (A5)`.
 
@@ -60,7 +59,7 @@ It then initiates the scanning process and saves the scanned image.
 The scanning process begins with `scan_session = device.scan(multiple=False)`. 
 This initiates a scan session using the `selected scanner`.
 
-$$ The program then enters a loop where it continuously reads the scan 
+The program then enters a loop where it continuously reads the scan 
 data until an EOFError occurs. This is used to handle 
 the end of the scan process.
 
@@ -85,7 +84,7 @@ and ensures that the `SANE interface is properly closed afterward`.
 # Running the Code
 
 Ensure you have the required libraries `(PIL and pyinsane2) installed`.
-$$ Execute the script to initiate the scanning process. Make sure a scanner is connected.
+Execute the script to initiate the scanning process. Make sure a scanner is connected.
 The scanned image will be saved as `output.jpg or with an incremented
 `number if files with the same name already exist`.
 Remember to install the necessary packages 
